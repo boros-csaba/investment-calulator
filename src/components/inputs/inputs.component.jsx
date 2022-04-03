@@ -61,7 +61,7 @@ function Inputs() {
                     <Form.Group as={Col}>
                         <Form.Label>Years</Form.Label>
                         <InputGroup>
-                            <Form.Control name="years" type="numer" onChange={handleInputChange} value={inputs.years}></Form.Control>
+                            <Form.Control name="years" type="number" onChange={handleInputChange} value={inputs.years}></Form.Control>
                             <InputGroup.Text>yrs.</InputGroup.Text>
                         </InputGroup>
                     </Form.Group>
