@@ -44,34 +44,34 @@ const calculateTableData = (inputs) => {
 
     let totalContribution = 0;
     let endBalance = +startAmount;
+    let yearStartAmount = startAmount;
+    let totalInterest = 0;
     for (var i = 0; i < years; i++) {
         const year = 1 + i;
+        yearStartAmount = +endBalance;
 
-        let contribution = +additionalContribution;
-        let interestEarned = endBalance * rateOfReturn/100;
+        let periods = 1;
+        if (+frequency === 1) periods = 52;
+        if (+frequency === 2) periods = 26;
+        if (+frequency === 3) periods = 12;
+        if (+frequency === 4) periods = 2;
 
-        if (+frequency === 1) {
-            contribution = +additionalContribution * 52
-        }
-        if (+frequency === 2) {
-            contribution = +additionalContribution * 26;
-        }
-        if (+frequency === 3) {
-            contribution = +additionalContribution * 12;
-        }
-        if (+frequency === 4) {
-            contribution = +additionalContribution * 2;
-        }
+        const baseInterest = endBalance * rateOfReturn/100;
+        const interest = baseInterest + additionalContribution * rateOfReturn/100/periods * 6*(12+1);
+        totalInterest += interest;
+
+        let contribution = +additionalContribution * periods;
 
         totalContribution += contribution;
-        endBalance += contribution + interestEarned;
+        endBalance += contribution + interest;
+
         result.push({
             year: year,
-            startAmount: +startAmount,
+            startAmount: +yearStartAmount,
             additionalContribution: +contribution,
             totalContribution: +totalContribution,
-            interestEarned: interestEarned,
-            totalInterestEarned: interestEarned,
+            interestEarned: interest,
+            totalInterestEarned: totalInterest,
             endBalance: endBalance
         });
     }
