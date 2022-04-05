@@ -57,7 +57,7 @@ const calculateTableData = (inputs) => {
         if (+frequency === 4) periods = 2;
 
         const baseInterest = endBalance * rateOfReturn/100;
-        const interest = baseInterest + additionalContribution * rateOfReturn/100/periods * 6*(12+1);
+        const interest = baseInterest + additionalContribution * rateOfReturn/100/periods * periods/2*(periods+1);
         totalInterest += interest;
 
         let contribution = +additionalContribution * periods;
