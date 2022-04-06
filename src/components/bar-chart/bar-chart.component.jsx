@@ -1,24 +1,21 @@
 import { useEffect } from 'react';
 import * as d3 from 'd3'
 
-const BarChart = () => {
+const BarChart = ({data}) => {
 
-    const data = [
-        { year: 1, amount: 1230 },
-        { year: 2, amount: 2500 },
-        { year: 3, amount: 5000}
-    ];
+
 
     useEffect(() => {
         const height = 400;
 
         const svg = d3.select('svg'); 
+        svg.selectAll('*').remove();
         const chart = svg.append('g')
             .attr('transform', 'translate(50, 50)');
 
         const yScale = d3.scaleLinear()
             .range([height, 0])
-            .domain([0, Math.max(...data.map(d => d.amount))]);
+            .domain([0, Math.max(...data.map(d => d.endBalance))]);
         chart.append('g')
             .call(d3.axisLeft(yScale));
 
@@ -35,10 +32,10 @@ const BarChart = () => {
             .enter()
             .append('rect')
             .attr('x', d => xScale(`Year ${d.year}`))
-            .attr('y', d => yScale(d.amount))
-            .attr('height', d => height - yScale(d.amount))
+            .attr('y', d => yScale(d.endBalance))
+            .attr('height', d => height - yScale(d.endBalance))
             .attr('width', xScale.bandwidth());
-    }, []);
+    }, [data]);
 
     return (
         <svg id="bar-chart" width="100%" height="500px"></svg>

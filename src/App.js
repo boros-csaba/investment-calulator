@@ -9,11 +9,11 @@ function App() {
 
   const { inputs } = useContext(InputsContext);
   const calculations = getCalculations(inputs);
-  
+
   return (
     <div className="App">
       <Inputs />
-      <BarChart  />
+      <BarChart data={calculations} />
       <YearlyBreakdown data={calculations} />
     </div>
   );
