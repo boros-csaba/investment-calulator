@@ -10,7 +10,7 @@ export const InputsProvider = ({ children }) => {
         startAmount: 10000,
         additionalContribution: 1000,
         rateOfReturn: 6.0,
-        years: 10,
+        years: 20,
         frequency: 3
     });
     const value = { inputs, setInputs };
