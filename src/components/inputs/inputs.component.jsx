@@ -23,7 +23,7 @@ function Inputs() {
                         <Form.Label>Starting amount</Form.Label>
                         <InputGroup>
                             <InputGroup.Text>$</InputGroup.Text>
-                            <Form.Control name="startAmount" type="number" onChange={handleInputChange} value={inputs.startAmount}></Form.Control>
+                            <Form.Control name="startAmount" type="number" onChange={handleInputChange} value={inputs.startAmount} min="0" max="100000000"></Form.Control>
                         </InputGroup>
                     </Form.Group>
                 </Row>
@@ -33,7 +33,7 @@ function Inputs() {
                         <Form.Label>Additional contribution</Form.Label>
                         <InputGroup>
                             <InputGroup.Text>$</InputGroup.Text>
-                            <Form.Control name="additionalContribution" type="number" onChange={handleInputChange} value={inputs.additionalContribution}></Form.Control>
+                            <Form.Control name="additionalContribution" type="number" onChange={handleInputChange} value={inputs.additionalContribution} min="0" max="1000000"></Form.Control>
                         </InputGroup>
                     </Form.Group>
 
@@ -53,7 +53,7 @@ function Inputs() {
                     <Form.Group as={Col}>
                         <Form.Label>Rate of return</Form.Label>
                         <InputGroup>
-                            <Form.Control name="rateOfReturn" type="number" step="0.1" onChange={handleInputChange} value={inputs.rateOfReturn}></Form.Control>
+                            <Form.Control name="rateOfReturn" type="number" step="0.1" onChange={handleInputChange} value={inputs.rateOfReturn} min="0" max="10000"></Form.Control>
                             <InputGroup.Text>%</InputGroup.Text>
                         </InputGroup>
                     </Form.Group>
