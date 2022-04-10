@@ -1,17 +1,17 @@
 import { useEffect } from 'react';
 import * as d3 from 'd3'
 
+import './bar-chart-component.scss'
+
 const BarChart = ({data}) => {
-
-
 
     useEffect(() => {
         const width = 1000;
         const height = 400;
 
         const svg = d3.select('svg');
-        svg.style("display", "block")
-            .style("margin", "auto") 
+        svg.style('display', 'block')
+            .style('margin', 'auto') 
         svg.selectAll('*').remove();
         const chart = svg.append('g')
             .attr('transform', 'translate(100, 50)');
@@ -38,6 +38,9 @@ const BarChart = ({data}) => {
         axis.selectAll('line')
             .attr('stroke', '#cccccc');
 
+        d3.select('#bar-chart-tooltip')
+            .style('visibility', 'hidden');
+
         chart.selectAll()
             .data(data)
             .enter()
@@ -46,7 +49,10 @@ const BarChart = ({data}) => {
             .attr('y', d => yScale(d.endBalance))
             .attr('height', d => height - yScale(d.endBalance))
             .attr('width', xScale.bandwidth())
-            .attr('fill', '#8bc34a');
+            .attr('fill', '#8bc34a')
+            .on('mouseover', mouseOverHandler)
+            .on('mousemove', mouseMoveHandler)
+            .on('mouseout', mouseOutHandler);
 
         chart.selectAll()
             .data(data)
@@ -56,7 +62,10 @@ const BarChart = ({data}) => {
             .attr('y', d => yScale(d.totalContribution))
             .attr('height', d => height - yScale(d.totalContribution - data[0].startAmount))
             .attr('width', xScale.bandwidth())
-            .attr('fill', '#03a9f4');
+            .attr('fill', '#03a9f4')
+            .on('mouseover', mouseOverHandler)
+            .on('mousemove', mouseMoveHandler)
+            .on('mouseout', mouseOutHandler);
 
         chart.selectAll()
             .data(data)
@@ -66,14 +75,40 @@ const BarChart = ({data}) => {
             .attr('y', yScale(data[0].startAmount))
             .attr('height', height - yScale(data[0].startAmount))
             .attr('width', xScale.bandwidth())
-            .attr('fill', '#fbc02d');
+            .attr('fill', '#fbc02d')
+            .on('mouseover', mouseOverHandler)
+            .on('mousemove', mouseMoveHandler)
+            .on('mouseout', mouseOutHandler);
     }, [data]);
 
     return (
         <div style={{ margin: '0 auto 0 auto', maxWidth: '1000px', padding: '0 5% 0 0'}}>
+            <div id="bar-chart-tooltip"></div>
             <svg id="bar-chart" width="100%" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid meet"></svg>
         </div>
     );
+}
+
+const mouseOverHandler = (event, item) => {
+    console.log(item);
+    console.log(event);
+    console.log(event.pageY);
+
+    const tooltip = d3.select('#bar-chart-tooltip');
+    tooltip.style('visibility', 'visible')
+        .style('left', `${event.pageX + 10}px`)
+        .style('top', `${event.pageY - 80}px`);
+}
+
+const mouseMoveHandler = (event) => {
+    const tooltip = d3.select('#bar-chart-tooltip');
+    tooltip.style('left', `${event.pageX + 10}px`)
+        .style('top', `${event.pageY - 80}px`);
+}
+
+const mouseOutHandler = (event) => {
+    const tooltip = d3.select('#bar-chart-tooltip');
+    tooltip.style('visibility', 'hidden');
 }
 
 export default BarChart;
