@@ -83,21 +83,38 @@ const BarChart = ({data}) => {
 
     return (
         <div style={{ margin: '0 auto 0 auto', maxWidth: '1000px', padding: '0 5% 0 0'}}>
-            <div id="bar-chart-tooltip"></div>
+            <div id="bar-chart-tooltip">
+                <div class="tooltip-labels">
+                    <div class="total-interest">Total interest earned: </div>
+                    <div class="total-contributions">Total contributions: </div>
+                    <div class="starting-amount">Starting amount: </div>
+                    <div>End balance: </div>
+                </div>
+                <div class="tooltip-values">
+                    <div class="total-interest-value"></div>
+                    <div class="total-contributions-value"></div>
+                    <div class="starting-amount-value"></div>
+                    <div><b class="end-balance-value"></b></div>
+                </div>
+            </div>
             <svg id="bar-chart" width="100%" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid meet"></svg>
         </div>
     );
 }
 
 const mouseOverHandler = (event, item) => {
-    console.log(item);
-    console.log(event);
-    console.log(event.pageY);
-
     const tooltip = d3.select('#bar-chart-tooltip');
     tooltip.style('visibility', 'visible')
         .style('left', `${event.pageX + 10}px`)
         .style('top', `${event.pageY - 80}px`);
+    d3.select('.total-interest-value')
+        .html(`$${(+item.interestEarned.toFixed(0)).toLocaleString()}`);
+    d3.select('.total-contributions-value')
+        .html(`$${(+item.totalContribution.toFixed(0)).toLocaleString()}`);
+    d3.select('.starting-amount-value')
+        .html(`$${(+item.initialAmount.toFixed(0)).toLocaleString()}`);
+    d3.select('.end-balance-value')
+        .html(`$${(+item.endBalance.toFixed(0)).toLocaleString()}`);
 }
 
 const mouseMoveHandler = (event) => {

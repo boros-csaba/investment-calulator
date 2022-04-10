@@ -48,6 +48,7 @@ const getCalculations = (inputs) => {
 
       result.push({
           year: year,
+          initialAmount: +startAmount,
           startAmount: +yearStartAmount,
           additionalContribution: +contribution,
           totalContribution: +totalContribution,
