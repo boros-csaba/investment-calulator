@@ -7,24 +7,27 @@ const PieChart = ({ data }) => {
     const lastYearData = data[data.length - 1];
 
     useEffect(() => {
-        const percentages = [
+        const percentages =  [
             {
                 id: 'pie-chart-value-1',
                 name: 'Total interest earned',
                 color: '#8bc34a',
-                value: 20
+                value: lastYearData.totalInterestEarned/lastYearData.endBalance * 100,
+                displayValue: lastYearData.totalInterestEarned
             },
             {
                 id: 'pie-chart-value-2',
                 name: 'Total contributions',
                 color: '#03a9f4',
-                value: 30
+                value: lastYearData.totalContribution/lastYearData.endBalance * 100,
+                displayValue: lastYearData.totalContribution
             },
             {
                 id: 'pie-chart-value-3',
                 name: 'Starting amount',
                 color: '#fbc02d',
-                value: 50
+                value: data[0].startAmount/lastYearData.endBalance * 100,
+                displayValue: data[0].startAmount
             }
         ];
 
@@ -83,9 +86,9 @@ const PieChart = ({ data }) => {
                     <div className="starting-amount">Starting amount: </div>
                 </div>
                 <div className="pie-chart-details-values">
-                    <div className="total-interest-value">${(+lastYearData.totalInterestEarned.toFixed(0)).toLocaleString()}</div>
-                    <div className="total-contributions-value">${(+lastYearData.totalContribution.toFixed(0)).toLocaleString()}</div>
-                    <div className="starting-amount-value">${(+data[0].startAmount.toFixed(0)).toLocaleString()}</div>
+                    <div>${(+lastYearData.totalInterestEarned.toFixed(0)).toLocaleString()}</div>
+                    <div>${(+lastYearData.totalContribution.toFixed(0)).toLocaleString()}</div>
+                    <div>${(+data[0].startAmount.toFixed(0)).toLocaleString()}</div>
                 </div>
             </div>
         </div>
@@ -102,7 +105,7 @@ const mouseOverHandler = (event, item) => {
     d3.select('.pie-chart-tooltip-label')
         .html(item.data.name);
     d3.select('.pie-chart-tooltip-value')
-        .html(`$${(+item.data.value.toFixed(0)).toLocaleString()}`);
+        .html(`$${(+item.data.displayValue.toFixed(0)).toLocaleString()}`);
 }
 
 const mouseMoveHandler = (event) => {
