@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="App">
       <Inputs />
-      <PieChart />
+      <PieChart data={calculations} />
       <BarChart data={calculations} />
       <YearlyBreakdown data={calculations} />
     </div>
