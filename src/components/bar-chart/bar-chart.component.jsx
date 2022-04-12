@@ -7,14 +7,14 @@ const BarChart = ({data}) => {
 
     useEffect(() => {
         const width = 800;
-        const height = 400;
+        const height = 450;
 
         const svg = d3.select('#bar-chart');
         svg.style('display', 'block')
             .style('margin', 'auto') 
         svg.selectAll('*').remove();
         const chart = svg.append('g')
-            .attr('transform', 'translate(100, 50)');
+            .attr('transform', 'translate(100, 0)');
 
         const yScale = d3.scaleLinear()
             .range([height, 0])

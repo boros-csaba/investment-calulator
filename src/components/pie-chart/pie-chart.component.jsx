@@ -4,7 +4,8 @@ import * as d3 from 'd3'
 import './pie-chart.component.scss'
 
 const PieChart = ({ data }) => {
-    
+    const lastYearData = data[data.length - 1];
+
     useEffect(() => {
         const percentages = [
             {
@@ -31,8 +32,8 @@ const PieChart = ({ data }) => {
         svg.selectAll('*').remove();
         const width = svg.attr('width');
         const height = svg.attr('height');
-        const radius = width * 0.3;
-        const hoverRadius = width * 0.32;
+        const radius = width * 0.45;
+        const hoverRadius = width * 0.5;
 
         var g = svg.append('g')
             .attr('transform', `translate(${width / 2},${height / 2})`);
@@ -74,7 +75,19 @@ const PieChart = ({ data }) => {
                 <span className="pie-chart-tooltip-label">Start amount</span><br />
                 <b className="pie-chart-tooltip-value">$12345</b>
             </div>
-            <svg id="pie-chart" width="300" height="300"></svg>
+            <svg id="pie-chart" width="230" height="230"></svg>
+            <div className="pie-chart-details">
+                <div className="pie-chart-details-labels">
+                    <div className="total-interest">Total interest earned: </div>
+                    <div className="total-contributions">Total contributions: </div>
+                    <div className="starting-amount">Starting amount: </div>
+                </div>
+                <div className="pie-chart-details-values">
+                    <div className="total-interest-value">${(+lastYearData.totalInterestEarned.toFixed(0)).toLocaleString()}</div>
+                    <div className="total-contributions-value">${(+lastYearData.totalContribution.toFixed(0)).toLocaleString()}</div>
+                    <div className="starting-amount-value">${(+data[0].startAmount.toFixed(0)).toLocaleString()}</div>
+                </div>
+            </div>
         </div>
     )
 }
