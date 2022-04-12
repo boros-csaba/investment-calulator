@@ -9,7 +9,7 @@ const BarChart = ({data}) => {
         const width = 800;
         const height = 400;
 
-        const svg = d3.select('svg');
+        const svg = d3.select('#bar-chart');
         svg.style('display', 'block')
             .style('margin', 'auto') 
         svg.selectAll('*').remove();
@@ -84,17 +84,17 @@ const BarChart = ({data}) => {
     return (
         <div style={{ margin: '0 auto 0 auto', maxWidth: '1000px', padding: '0 5% 0 0'}}>
             <div id="bar-chart-tooltip">
-                <div class="tooltip-labels">
-                    <div class="total-interest">Total interest earned: </div>
-                    <div class="total-contributions">Total contributions: </div>
-                    <div class="starting-amount">Starting amount: </div>
+                <div className="tooltip-labels">
+                    <div className="total-interest">Total interest earned: </div>
+                    <div className="total-contributions">Total contributions: </div>
+                    <div className="starting-amount">Starting amount: </div>
                     <div>End balance: </div>
                 </div>
-                <div class="tooltip-values">
-                    <div class="total-interest-value"></div>
-                    <div class="total-contributions-value"></div>
-                    <div class="starting-amount-value"></div>
-                    <div><b class="end-balance-value"></b></div>
+                <div className="tooltip-values">
+                    <div className="total-interest-value"></div>
+                    <div className="total-contributions-value"></div>
+                    <div className="starting-amount-value"></div>
+                    <div><b className="end-balance-value"></b></div>
                 </div>
             </div>
             <svg id="bar-chart" width="100%" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid meet"></svg>
@@ -123,7 +123,7 @@ const mouseMoveHandler = (event) => {
         .style('top', `${event.pageY - 80}px`);
 }
 
-const mouseOutHandler = (event) => {
+const mouseOutHandler = () => {
     const tooltip = d3.select('#bar-chart-tooltip');
     tooltip.style('visibility', 'hidden');
 }
