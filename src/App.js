@@ -4,6 +4,7 @@ import BarChart from './components/bar-chart/bar-chart.component';
 import Inputs from './components/inputs/inputs.component';
 import YearlyBreakdown from './components/yearly-breakdown/yearly-breakdown.component';
 import { InputsContext } from './contexts/inputs.context';
+import PieChart from './components/pie-chart/pie-chart.component';
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
   return (
     <div className="App">
       <Inputs />
+      <PieChart />
       <BarChart data={calculations} />
       <YearlyBreakdown data={calculations} />
     </div>
