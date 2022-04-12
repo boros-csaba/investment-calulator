@@ -1,3 +1,14 @@
 .bar-chart-container {
     
 }
+
+.pie-chart-tooltip {
+    background-color: #fafbfc;
+    visibility: hidden;
+    position: absolute;
+    opacity: 0.95;
+    padding: 10px;
+    vertical-align: middle;
+    border-radius: 5px;
+    font-size: 13px;
+}
