@@ -18,7 +18,7 @@ const BarChart = ({data}) => {
 
         const yScale = d3.scaleLinear()
             .range([height, 0])
-            .domain([0, Math.max(...data.map(d => d.endBalance))]);
+            .domain([0, Math.max(...data.map(d => d.endBalance * 1.05))]);
         chart.append('g')
             .call(d3.axisLeft(yScale));
 

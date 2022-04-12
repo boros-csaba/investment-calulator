@@ -99,8 +99,6 @@ const mouseMoveHandler = (event) => {
 }
 
 const mouseOutHandler = (_, item) => {
-
-    console.log(item.data);
     d3.select(`#${item.data.id}`)
         .attr('fill', 'transparent');
     const tooltip = d3.select('.pie-chart-tooltip');
