@@ -6,7 +6,7 @@ import './bar-chart-component.scss'
 const BarChart = ({data}) => {
 
     useEffect(() => {
-        const width = 1000;
+        const width = 800;
         const height = 400;
 
         const svg = d3.select('svg');
