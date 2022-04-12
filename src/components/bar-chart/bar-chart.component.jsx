@@ -59,8 +59,8 @@ const BarChart = ({data}) => {
             .enter()
             .append('rect')
             .attr('x', d => xScale(`Year ${d.year}`))
-            .attr('y', d => yScale(d.totalContribution))
-            .attr('height', d => height - yScale(d.totalContribution - data[0].startAmount))
+            .attr('y', d => yScale(data[0].startAmount + d.totalContribution))
+            .attr('height', d => height - yScale(d.totalContribution))
             .attr('width', xScale.bandwidth())
             .attr('fill', '#03a9f4')
             .on('mouseover', mouseOverHandler)
@@ -108,7 +108,7 @@ const mouseOverHandler = (event, item) => {
         .style('left', `${event.pageX + 10}px`)
         .style('top', `${event.pageY - 80}px`);
     d3.select('.total-interest-value')
-        .html(`$${(+item.interestEarned.toFixed(0)).toLocaleString()}`);
+        .html(`$${(+item.totalInterestEarned.toFixed(0)).toLocaleString()}`);
     d3.select('.total-contributions-value')
         .html(`$${(+item.totalContribution.toFixed(0)).toLocaleString()}`);
     d3.select('.starting-amount-value')
