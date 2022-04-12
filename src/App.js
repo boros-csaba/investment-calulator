@@ -1,4 +1,4 @@
-import './App.css';
+import './app.scss';
 import { useContext } from 'react';
 import BarChart from './components/bar-chart/bar-chart.component';
 import Inputs from './components/inputs/inputs.component';

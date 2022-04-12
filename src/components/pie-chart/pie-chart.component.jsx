@@ -50,7 +50,9 @@ const PieChart = ({ data }) => {
     }, data);
 
     return (
-        <svg id="pie-chart" width="500" height="400"></svg>
+        <div className="pie-chart-container">
+            <svg id="pie-chart" width="500" height="400"></svg>
+        </div>
     )
 }
 

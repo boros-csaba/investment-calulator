@@ -82,7 +82,7 @@ const BarChart = ({data}) => {
     }, [data]);
 
     return (
-        <div style={{ margin: '0 auto 0 auto', maxWidth: '1000px', padding: '0 5% 0 0'}}>
+        <div className="bar-chart-container">
             <div id="bar-chart-tooltip">
                 <div className="tooltip-labels">
                     <div className="total-interest">Total interest earned: </div>
