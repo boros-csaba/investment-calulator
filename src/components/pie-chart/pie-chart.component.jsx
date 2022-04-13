@@ -84,11 +84,13 @@ const PieChart = ({ data }) => {
                     <div className="total-interest">Total interest earned: </div>
                     <div className="total-contributions">Total contributions: </div>
                     <div className="starting-amount">Starting amount: </div>
+                    <div><b>Total: </b></div>
                 </div>
                 <div className="pie-chart-details-values">
                     <div>${(+lastYearData.totalInterestEarned.toFixed(0)).toLocaleString()}</div>
                     <div>${(+lastYearData.totalContribution.toFixed(0)).toLocaleString()}</div>
                     <div>${(+data[0].startAmount.toFixed(0)).toLocaleString()}</div>
+                    <div><b>${(+lastYearData.endBalance.toFixed(0)).toLocaleString()}</b></div>
                 </div>
             </div>
         </div>
