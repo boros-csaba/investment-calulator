@@ -8,8 +8,9 @@ The app is built with **React** using **Javascript** and it is hosted using **Ne
 ## Features
 Given a starting amount, an additional contributions amount and frequency the app can calculate the growth of the investment using a provided expected rate of return.  
 ### Pie chart with hover effect
-
+![Img](pie-chart.png)
 ### Bar chart
+![Img](bar-chart.png)
 
 ### Table with yearly progress
-
+![Img](summary-table.png)
