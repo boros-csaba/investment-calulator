@@ -1,11 +1,13 @@
-.bar-chart-container {
+import styled from 'styled-components'
+
+export const BarChartContainer = styled.div`
     max-width: 1200px;
     width: 100%;
     margin-top: 5px;
     flex-basis: 100%;
-}
+`
 
-#bar-chart-tooltip {
+export const BarChartTooltipContainer = styled.div`
     background-color: #fafbfc;
     visibility: hidden;
     position: absolute;
@@ -23,7 +25,7 @@
             align-items: center;
 
             &::before {
-                content: "\2022";
+                content: '•';
                 font-weight: bold;
                 font-size: 35px;
                 height: 20px;
@@ -50,4 +52,4 @@
         float: left;
         text-align: right;
     }
-}
+`

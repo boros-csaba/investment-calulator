@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import * as d3 from 'd3'
 
-import './pie-chart.component.scss'
+import { PieChartContainer } from "./pie-chart.styles";
 
 const PieChart = ({ data }) => {
     const lastYearData = data[data.length - 1];
@@ -73,7 +73,7 @@ const PieChart = ({ data }) => {
     }, data);
 
     return (
-        <div className="pie-chart-container">
+        <PieChartContainer>
             <div className="pie-chart-tooltip">
                 <span className="pie-chart-tooltip-label">Start amount</span><br />
                 <b className="pie-chart-tooltip-value">$12345</b>
@@ -93,7 +93,7 @@ const PieChart = ({ data }) => {
                     <div><b>${(+lastYearData.endBalance.toFixed(0)).toLocaleString()}</b></div>
                 </div>
             </div>
-        </div>
+        </PieChartContainer>
     )
 }
 

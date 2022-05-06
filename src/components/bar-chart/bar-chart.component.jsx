@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import * as d3 from 'd3'
 
-import './bar-chart-component.scss'
+import { BarChartContainer, BarChartTooltipContainer } from './bar-chart.styles'
 
 const BarChart = ({data}) => {
 
@@ -82,8 +82,8 @@ const BarChart = ({data}) => {
     }, [data]);
 
     return (
-        <div className="bar-chart-container">
-            <div id="bar-chart-tooltip">
+        <BarChartContainer>
+            <BarChartTooltipContainer id='bar-chart-tooltip'>
                 <div className="tooltip-labels">
                     <div className="total-interest">Total interest earned: </div>
                     <div className="total-contributions">Total contributions: </div>
@@ -96,9 +96,9 @@ const BarChart = ({data}) => {
                     <div className="starting-amount-value"></div>
                     <div><b className="end-balance-value"></b></div>
                 </div>
-            </div>
+            </BarChartTooltipContainer>
             <svg id="bar-chart" width="100%" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid meet"></svg>
-        </div>
+        </BarChartContainer>
     );
 }
 

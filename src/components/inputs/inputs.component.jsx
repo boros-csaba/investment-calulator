@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col'
 
-import './inputs.component.scss';
+import { InputsContainer } from './inputs.styles';
 import { InputsContext } from '../../contexts/inputs.context';
 
 function Inputs() {
@@ -16,7 +16,7 @@ function Inputs() {
     }
 
     return (
-        <div className="inputs-container">
+        <InputsContainer>
             <Form>
                 <Row className="mb-3">
                     <Form.Group>
@@ -67,7 +67,7 @@ function Inputs() {
                     </Form.Group>
                 </Row>
             </Form>
-        </div>
+        </InputsContainer>
     )
 }
 
