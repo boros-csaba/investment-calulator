@@ -9,10 +9,16 @@ import { InputsContext } from '../../contexts/inputs.context';
 
 function Inputs() {
 
-    const { inputs, setInputs } = useContext(InputsContext);
+    const { inputs, setStartAmount } = useContext(InputsContext);
 
     const handleInputChange = (event) => {
-        setInputs(currentValue => Object.assign({}, currentValue, { [event.target.name]: event.target.value }));
+        switch (event.target.name){
+            case 'startAmount':
+                setStartAmount(event.target.value);
+                break;
+            default:
+                break;
+        }
     }
 
     return (
