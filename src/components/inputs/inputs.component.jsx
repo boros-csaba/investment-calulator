@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { useDispatch } from 'react-redux';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
@@ -6,27 +7,28 @@ import Col from 'react-bootstrap/Col'
 
 import { InputsContainer } from './inputs.styles';
 import { InputsContext } from '../../contexts/inputs.context';
+import { setStartAmount, setAdditionalContribution, setRateOfReturn, setYears, setFrequency } from '../../store/inputs/inputs.action'
 
 function Inputs() {
-
-    const { inputs, setStartAmount, setAdditionalContribution, setRateOfReturn, setYears, setFrequency } = useContext(InputsContext);
+    const dispatch = useDispatch();
+    const { inputs } = useContext(InputsContext);
 
     const handleInputChange = (event) => {
         switch (event.target.name){
             case 'startAmount':
-                setStartAmount(event.target.value);
+                dispatch(setStartAmount(event.target.value));
                 break;
             case 'additionalContribution':
-                setAdditionalContribution(event.target.value);
+                dispatch(setAdditionalContribution(event.target.value));
                 break;
             case 'frequency':
-                setFrequency(event.target.value);
+                dispatch(setFrequency(event.target.value));
                 break;
             case 'rateOfReturn':
-                setRateOfReturn(event.target.value);
+                dispatch(setRateOfReturn(event.target.value));
                 break;
             case 'years':
-                setYears(event.target.value);
+                dispatch(setYears(event.target.value));
                 break;
             default:
                 break;

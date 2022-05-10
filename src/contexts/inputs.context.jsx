@@ -58,22 +58,6 @@ const INITIAL_STATE = {
 export const InputsProvider = ({ children }) => {
     const [inputs, dispatch] = useReducer(inputsReducer, INITIAL_STATE);
 
-    const setStartAmount = (startAmount) => {
-        dispatch({ type: INPUTS_ACTION_TYPES.SET_START_AMOUNT, payload: startAmount})
-    };
-    const setAdditionalContribution = (additionalContribution) => {
-        dispatch({ type: INPUTS_ACTION_TYPES.SET_ADDITIONAL_CONTRIBUTION, payload: additionalContribution})
-    };
-    const setRateOfReturn = (rateOfReturn) => {
-        dispatch({ type: INPUTS_ACTION_TYPES.SET_RATE_OF_RETURN, payload: rateOfReturn})
-    };
-    const setYears = (years) => {
-        dispatch({ type: INPUTS_ACTION_TYPES.SET_YEARS, payload: years})
-    };
-    const setFrequency = (frequency) => {
-        dispatch({ type: INPUTS_ACTION_TYPES.SET_FREQUENCY, payload: frequency})
-    };
-
-    const value = { inputs, setStartAmount, setAdditionalContribution, setRateOfReturn, setYears, setFrequency };
+    const value = { inputs };
     return <InputsContext.Provider value={value}>{children}</InputsContext.Provider>
 }
