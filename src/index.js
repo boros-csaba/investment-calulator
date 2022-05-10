@@ -3,15 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { InputsProvider } from './contexts/inputs.context';
-
+import { Provider } from 'react-redux'
+import { store } from './store/store'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <InputsProvider>
+    <Provider store={store}>
       <App />
-    </InputsProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
