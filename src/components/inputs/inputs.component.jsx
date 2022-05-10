@@ -1,17 +1,15 @@
-import { useContext } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col'
 
 import { InputsContainer } from './inputs.styles';
-import { InputsContext } from '../../contexts/inputs.context';
 import { setStartAmount, setAdditionalContribution, setRateOfReturn, setYears, setFrequency } from '../../store/inputs/inputs.action'
 
 function Inputs() {
+    const inputs = useSelector((state) => state.inputs);
     const dispatch = useDispatch();
-    const { inputs } = useContext(InputsContext);
 
     const handleInputChange = (event) => {
         switch (event.target.name){
