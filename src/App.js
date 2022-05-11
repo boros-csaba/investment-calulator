@@ -1,5 +1,6 @@
 import './app.scss';
 import { useSelector } from 'react-redux';
+import { selectInputs } from './store/inputs/inputs.selector';
 import BarChart from './components/bar-chart/bar-chart.component';
 import Inputs from './components/inputs/inputs.component';
 import YearlyBreakdown from './components/yearly-breakdown/yearly-breakdown.component';
@@ -7,7 +8,7 @@ import PieChart from './components/pie-chart/pie-chart.component';
 
 function App() {
 
-  const inputs = useSelector((state) => state.inputs);
+  const inputs = useSelector(selectInputs);
   const calculations = getCalculations(inputs);
 
   return (

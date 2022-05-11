@@ -1,0 +1,1 @@
+export const selectInputs = (state) => state.inputs;

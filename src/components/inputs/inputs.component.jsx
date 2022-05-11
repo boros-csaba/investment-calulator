@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { selectInputs } from '../../store/inputs/inputs.selector'
 import InputGroup from 'react-bootstrap/InputGroup';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
@@ -8,7 +9,7 @@ import { InputsContainer } from './inputs.styles';
 import { setStartAmount, setAdditionalContribution, setRateOfReturn, setYears, setFrequency } from '../../store/inputs/inputs.action'
 
 function Inputs() {
-    const inputs = useSelector((state) => state.inputs);
+    const inputs = useSelector(selectInputs);
     const dispatch = useDispatch();
 
     const handleInputChange = (event) => {
